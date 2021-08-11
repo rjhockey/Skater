@@ -7,6 +7,9 @@ public class PlayerMotor : MonoBehaviour
     private const float LANE_DISTANCE = 3.0f;
     private const float TURN_SPEED = 0.05f;
 
+    //
+    private bool isRunning = false;
+
     //animation
     private Animator anim;
 
@@ -26,6 +29,9 @@ public class PlayerMotor : MonoBehaviour
 
     private void Update()
     {
+        if (!isRunning)
+            return;
+
         //gather input on which lane we should be
         if (MobileInput.Instance.SwipeLeft)
             MoveLane(false);
@@ -51,13 +57,19 @@ public class PlayerMotor : MonoBehaviour
         if (isGrounded) //if grounded
         {
             verticalVelocity = -0.1f;
-            
 
             if (MobileInput.Instance.SwipeUp)
             {
                 //jump
                 anim.SetTrigger("Jump");
                 verticalVelocity = jumpForce;
+            }
+
+            else if (MobileInput.Instance.SwipeDown)
+            {
+                //slide
+                StartSliding();
+                Invoke("StopSliding", 1.0f); // Stop sliding after 1 second
             }
         }
         else
@@ -84,6 +96,20 @@ public class PlayerMotor : MonoBehaviour
             dir.y = 0;
             transform.forward = Vector3.Lerp(transform.forward, dir, TURN_SPEED);
         }
+    }
+
+    private void StartSliding()
+    {
+        anim.SetBool("Sliding", true);
+        controller.height /= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
+    }
+
+    private void StopSliding()
+    {
+        anim.SetBool("Sliding", false);
+        controller.height *= 2;
+        controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
     }
 
     private void MoveLane(bool goingRight)
@@ -113,5 +139,27 @@ public class PlayerMotor : MonoBehaviour
         Ray groundRay = new Ray(new Vector3(controller.bounds.center.x,(controller.bounds.center.y - controller.bounds.extents.y) + 0.2f, controller.bounds.center.z), Vector3.down);
 
         return Physics.Raycast(groundRay, 0.2f + 0.1f);
+    }
+
+    public void StartRunning()
+    {
+        isRunning = true;
+        anim.SetTrigger("StartRunning");
+    }
+
+    private void Crash()
+    {
+        anim.SetTrigger("Death");
+        isRunning = false;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        switch (hit.gameObject.tag)
+        {
+            case "Obstacle":
+                Crash();
+                break;
+        }
     }
 }
