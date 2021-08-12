@@ -45,15 +45,16 @@ public class GameManager : MonoBehaviour
                 lastScore = (int)score;
                 scoreText.text = score.ToString("0");
             }
-
-            
+  
             scoreText.text = score.ToString("0");
         }
     }
 
     public void GetCoin()
     {
-        coinScore += COIN_SCORE_AMOUNT;
+        coinScore++;
+        coinText.text = coinScore.ToString("0");
+        score += COIN_SCORE_AMOUNT;
         scoreText.text = scoreText.text = score.ToString("0");
     }
 
