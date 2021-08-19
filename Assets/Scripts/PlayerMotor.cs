@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    private const float LANE_DISTANCE = 3.0f;
+    private const float LANE_DISTANCE = 2.5f;
     private const float TURN_SPEED = 0.05f;
 
     //
@@ -16,6 +16,7 @@ public class PlayerMotor : MonoBehaviour
     //movement
     private CharacterController controller;
     private float jumpForce = 4.0f;
+    [SerializeField] private float slideTime = 2.0f;
     private float gravity = 12.0f;
     private float verticalVelocity;
     private int desiredLane = 1; // 0 left, 1 middle, 2 right
@@ -84,7 +85,7 @@ public class PlayerMotor : MonoBehaviour
             {
                 //slide
                 StartSliding();
-                Invoke("StopSliding", 1.0f); // Stop sliding after 1 second
+                Invoke("StopSliding", slideTime); // Stop sliding after x seconds set above
             }
         }
         else
@@ -166,6 +167,7 @@ public class PlayerMotor : MonoBehaviour
     {
         anim.SetTrigger("Death");
         isRunning = false;
+        GameManager.Instance.IsDead = true;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

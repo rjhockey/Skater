@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//SCRIPT attached to prefab pieces & used by PieceSpawner.cs
 public enum PieceType
 {
     none = -1,
