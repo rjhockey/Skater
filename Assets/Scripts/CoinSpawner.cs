@@ -14,6 +14,7 @@ public class CoinSpawner : MonoBehaviour
         coins = new GameObject[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
+            Debug.Log("get child"); // ??coins are grabbed but position is wrong
             coins[i] = transform.GetChild(i).gameObject;
         }
 

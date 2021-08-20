@@ -67,6 +67,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4407851501264979628}
     m_Modifications:
+    - target: {fileID: 7932125605940028075, guid: 326ec4860036b4018b31955d02f9df2e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0914ed9b5e8e341e2842a0b4278eaceb, type: 2}
     - target: {fileID: 7944924829643102715, guid: 326ec4860036b4018b31955d02f9df2e, type: 3}
       propertyPath: m_Name
       value: SS_RampIce

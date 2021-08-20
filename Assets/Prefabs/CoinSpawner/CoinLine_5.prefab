@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4923d9780e6f742a98a25108b1195d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCoin: 5
+  chanceToSpawn: 0.5
+  forceSpawnAll: 0
 --- !u!1001 &454240424774697801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4137762654838371465, guid: 24113fe5b8cd547979d0a01439fd0944, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0914ed9b5e8e341e2842a0b4278eaceb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24113fe5b8cd547979d0a01439fd0944, type: 3}
 --- !u!4 &3176120516089259642 stripped
