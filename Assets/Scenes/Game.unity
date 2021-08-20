@@ -441,6 +441,7 @@ MonoBehaviour:
   - {fileID: 7868317705515246564, guid: aa15244d7d77d4fcb9416b3d36c6be7e, type: 3}
   - {fileID: 7399196892314875889, guid: 01356593a6b8f4fcab0dc22499a8c914, type: 3}
   - {fileID: 8150416750939969902, guid: 245faacd4b8d14c4aac1c49959baf37b, type: 3}
+  - {fileID: 8656062177834323827, guid: d6dc69cf590a64ce6b75184d73c52ea8, type: 3}
   availableTransitions:
   - {fileID: 3245453954209318595, guid: 419bced0f3d844584bba9108ea81d8b2, type: 3}
   segments: []
