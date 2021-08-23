@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private PlayerMotor motor;
 
     //UI and UI fields
+    public Animator gameCanvas;
     public Text scoreText, coinText, modifierText;
     private float score, coinScore, modifierScore;
     private int lastScore;
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
             isGameStarted = true;
             motor.StartRunning();
             FindObjectOfType<GlacierSpawner>().IsScrolling = true;
+            FindObjectOfType<CameraMotor>().IsMoving = true;
+            gameCanvas.SetTrigger("Show");
+
         }
 
         if (isGameStarted && !IsDead)
