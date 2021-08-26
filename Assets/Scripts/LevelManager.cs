@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     public List<Segment> segments = new List<Segment>();
 
     //gameplay
-    private bool isMoving = false;
+    //private bool isMoving = false;
 
     private void Awake()
     {
